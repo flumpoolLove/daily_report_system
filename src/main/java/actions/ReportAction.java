@@ -223,10 +223,16 @@ public class ReportAction extends ActionBase {
             //idを条件に日報データを取得する
             ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
+            System.out.println("ここまでは動作確認済み");
+
             //入力された日報内容を設定する
             rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
             rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
             rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
+            rv.setWorkedAt(LocalDateTime.parse(getRequestParam(AttributeConst.REP_WORKED_AT)));
+            rv.setLeavingAt(LocalDateTime.parse(getRequestParam(AttributeConst.REP_LEAVING_AT)));
+
+
 
             //日報データを更新する
             List<String> errors = service.update(rv);

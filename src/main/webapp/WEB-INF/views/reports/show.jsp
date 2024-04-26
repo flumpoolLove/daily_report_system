@@ -24,6 +24,16 @@
                     <td><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
                 </tr>
                 <tr>
+                    <th>出勤時間</th>
+                    <fmt:parseDate value="${report.workedAt}" pattern="yyyy-MM-dd'T'HH:mm" var="workedAt" type="date"/>
+                    <td><fmt:formatDate value='${workedAt}' pattern='yyyy-MM-dd HH:mm'/></td>
+                </tr>
+                <tr>
+                    <th>退勤時間</th>
+                    <fmt:parseDate value="${report.leavingAt}" pattern="yyyy-MM-dd'T'HH:mm" var="leavingAt" type="date"/>
+                    <td><fmt:formatDate value='${leavingAt}' pattern='yyyy-MM-dd HH:mm'/></td>
+                </tr>
+                <tr>
                     <th>内容</th>
                     <td><pre><c:out value="${report.content}" /></pre></td>
                 </tr>
