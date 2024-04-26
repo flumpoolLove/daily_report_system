@@ -20,6 +20,8 @@ public class TopAction extends ActionBase {
 
     private ReportService service;
 
+
+
     /**
      * indexメソッドを実行する
      */
@@ -27,6 +29,7 @@ public class TopAction extends ActionBase {
     public void process() throws ServletException, IOException {
 
         service=new ReportService();
+
 
         //メソッドを実行
         invoke();
@@ -42,6 +45,7 @@ public class TopAction extends ActionBase {
 
         //セッションからログイン中の従業員情報を取得
         EmployeeView loginEmployee = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+
 
         //ログイン中の従業員が作成した日報データを、指定されたページ数の一覧画面に表示する分取得する
         int page = getPage();

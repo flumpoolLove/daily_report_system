@@ -24,13 +24,18 @@ public class ReportService extends ServiceBase {
      */
     public List<ReportView> getMinePerPage(EmployeeView employee, int page) {
 
+        
+
         List<Report> reports = em.createNamedQuery(JpaConst.Q_REP_GET_ALL_MINE, Report.class)
                 .setParameter(JpaConst.JPQL_PARM_EMPLOYEE, EmployeeConverter.toModel(employee))
                 .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
                 .setMaxResults(JpaConst.ROW_PER_PAGE)
                 .getResultList();
         return ReportConverter.toViewList(reports);
-    }
+        
+      
+    } 
+    
 
     /**
      * 指定した従業員が作成した日報データの件数を取得し、返却する

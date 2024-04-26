@@ -21,6 +21,14 @@
 <c:out value="${sessionScope.login_employee.name}" />
 <br /><br />
 
+<label for="${AttributeConst.REP_WORKED_AT.getValue()}">出勤時間</label><br/>
+<input type="datetime-local" name="${AttributeConst.REP_WORKED_AT.getValue()}" id="${AttributeConst.REP_WORKED_AT.getValue()}" value="<fmt:formatDate value='${workedAt}' pattern='yyyy-MM-dd HH:mm'/>"/>
+<br/><br/>
+
+<label for="${AttributeConst.REP_LEAVING_AT.getValue()}">退勤時間</label><br/>
+<input type="datetime-local" name="${AttributeConst.REP_LEAVING_AT.getValue()}" id="${AttributeConst.REP_LEAVING_AT.getValue()}" value="<fmt:formatDate value='${leavingAt}' pattern='yyyy-MM-dd HH:mm'/>"/>
+<br/><br/>
+
 <label for="${AttributeConst.REP_TITLE.getValue()}">タイトル</label><br />
 <input type="text" name="${AttributeConst.REP_TITLE.getValue()}" id="${AttributeConst.REP_TITLE.getValue()}" value="${report.title}" />
 <br /><br />

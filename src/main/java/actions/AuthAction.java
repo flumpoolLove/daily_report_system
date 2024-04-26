@@ -43,6 +43,7 @@ public class AuthAction extends ActionBase {
         //CSRF対策用トークンを設定
         putRequestScope(AttributeConst.TOKEN, getTokenId());
 
+
         //セッションにフラッシュメッセージが登録されている場合はリクエストスコープに設定する
         String flush = getSessionScope(AttributeConst.FLUSH);
         if (flush != null) {
@@ -74,6 +75,8 @@ public class AuthAction extends ActionBase {
 
             //CSRF対策 tokenのチェック
             if (checkToken()) {
+
+
 
                 //ログインした従業員のDBデータを取得
                 EmployeeView ev = service.findOne(code, plainPass, pepper);

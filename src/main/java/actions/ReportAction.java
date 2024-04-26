@@ -2,6 +2,7 @@ package actions;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import services.ReportService;
  */
 public class ReportAction extends ActionBase {
 
+
     private ReportService service;
 
     /**
@@ -28,7 +30,11 @@ public class ReportAction extends ActionBase {
     @Override
     public void process() throws ServletException, IOException {
 
+
+
+
         service = new ReportService();
+
 
         //メソッドを実行
         invoke();
@@ -80,8 +86,10 @@ public class ReportAction extends ActionBase {
         rv.setReportDate(LocalDate.now());
         putRequestScope(AttributeConst.REPORT, rv); //日付のみ設定済みの日報インスタンス
 
+
         //新規登録画面を表示
         forward(ForwardConst.FW_REP_NEW);
+
 
     }
 
@@ -104,8 +112,12 @@ public class ReportAction extends ActionBase {
                 day = LocalDate.parse(getRequestParam(AttributeConst.REP_DATE));
             }
 
+
+
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+
+            System.out.println("ここまでは動作確認済み");
 
             //パラメータの値をもとに日報情報のインスタンスを作成する
             ReportView rv = new ReportView(
@@ -115,7 +127,11 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
-                    null);
+                    null,
+                    LocalDateTime.parse(getRequestParam(AttributeConst.REP_WORKED_AT)),
+                    LocalDateTime.parse(getRequestParam(AttributeConst.REP_LEAVING_AT)));
+
+
 
             //日報情報登録
             List<String> errors = service.create(rv);
